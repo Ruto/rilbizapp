@@ -3,8 +3,8 @@ class User < ApplicationRecord
 
   validates :email, :username, :phone, presence: true, on: :create
   validates :email, :username, :phone, :phone_token, :email_token, uniqueness: true
-  validates :email, case_sensitive: false
-  #validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/ }
+  validates :email, confirmation: { case_sensitive: false }
+  validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/ }
 
   before_save :downcase_email
   before_create :generate_confirmation_instructions
