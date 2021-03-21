@@ -91,7 +91,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.delivery_method = :smtp
-  host = 'https://smartbizapp.herokuapp.com' #replace with your own url  https://smartbizapp.herokuapp.com/
+  host = 'https://rilbizapp.herokuapp.com' #replace with your own url  https://smartbizapp.herokuapp.com/
   config.action_mailer.default_url_options = { host: host }
 
   # SMTP settings for gmail
