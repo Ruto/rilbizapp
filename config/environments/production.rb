@@ -100,9 +100,9 @@ Rails.application.configure do
     :port                 => 587,
     :user_name            => ENV['GMAIL_USERNAME'], #<gmail_username>
     :password             => ENV['GMAIL_PASSWORD'], #<gmail_password>
-    :authentication       => "plain"
-  #  :enable_starttls_auto => true,
-  #  :openssl_verify_mode  => 'none'
+    :authentication       => "plain",
+    :enable_starttls_auto => true,
+    :openssl_verify_mode  => 'none'
   }
 
   # Inserts middleware to perform automatic connection switching.

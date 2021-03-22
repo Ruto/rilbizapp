@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: "smartbizapp@gmail.com"
+  default from: "rilbizapp@gmail.com"
  # prepend_view_path "custom/path/to/mailer/view"
   #layout 'user_mailer/user_confirmation.text.erb' # use awesome.(html|text).erb as the layout
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -10,7 +10,7 @@ class UserMailer < ApplicationMailer
   def user_confirmation
     #@greeting = "Hi"
     @user = params[:user]
-    mail to: @user.email, subject: 'New SmartBiz Account Confirmation'
+    mail to: @user.email, subject: 'New RIL WOOD WORKS Account Confirmation'
 
   end
 
