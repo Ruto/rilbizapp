@@ -27,7 +27,7 @@ module V1
         token = WebToken.encode(user, device)
         UserMailer.with(user: @user).user_confirmation.deliver_later
         message = "Welcome '#{@user.username}' to RILWOOD WORKS,  Your verifivation code is '#{@user.phone_token}'."
-        phone = "#{@user.phone}"
+        phone = @user.phone
         TwilioTextMessenger.new(message, phone).call
         render :create, status: :created, locals: { token: token }
         #render json: { token: token }, status: :created
