@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/ }
 
   before_save :downcase_email
-  before_create :generate_confirmation_instructions
+  before_create :generate_confirmation_instructions, :internationalize_phone_number
 
 
   def downcase_email
@@ -76,5 +76,19 @@ class User < ApplicationRecord
       self[column] = SecureRandom.urlsafe_base64(5)
     end while User.exists?(column => self[column])
   end
+
+
+  def internationalize_phone_number
+    number = self.phone
+    country = self.country
+    c = Country[Country.find_by_name(country)[0]]
+    if c
+      number = Phony.normalize(number)
+      number = "#{c.country_code}#{number}" unless number.starts_with?(c.country_code)
+    end
+    number = Phony.normalize(number)
+    self.phone = number
+  end
+
 
 end

@@ -129,7 +129,7 @@ module V1
     private
 
     def user_params
-      params.permit(:username, :phone, :device, :device_desc, :email, :reset_password_token, :password, :password_confirmation, :phone_token, :email_token)
+      params.permit(:username, :phone, :country, :device, :device_desc, :email, :reset_password_token, :password, :password_confirmation, :phone_token, :email_token)
     end
 
   end
