@@ -3,7 +3,7 @@ class TwilioTextMessenger
 
   def initialize(message, phone)
     @message = message
-    @phone = phone
+    @phone = "#{"+"}#{phone}"
   end
 
   def call
