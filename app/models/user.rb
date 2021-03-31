@@ -84,7 +84,7 @@ class User < ApplicationRecord
     c = Country[Country.find_by_name(country)[0]]
     if c
       number = Phony.normalize(number)
-      number = "#{"+"}#{c.country_code}#{number}" unless number.starts_with?(c.country_code)
+      number = "#{c.country_code}#{number}" unless number.starts_with?(c.country_code)
     end
     number = Phony.normalize(number)
     self.phone = number
