@@ -20,7 +20,7 @@ gem 'twilio-ruby'
 gem 'countries', require: 'countries/global'
 gem 'phony'
 
-#gem 'ancestry'
+gem 'ancestry'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
