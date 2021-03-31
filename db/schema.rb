@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_31_084705) do
+ActiveRecord::Schema.define(version: 2021_03_31_103152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,23 @@ ActiveRecord::Schema.define(version: 2021_03_31_084705) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["organizable_type", "organizable_id"], name: "index_organizations_on_organizable"
     t.index ["user_id"], name: "index_organizations_on_user_id"
+  end
+
+  create_table "structures", force: :cascade do |t|
+    t.string "name"
+    t.string "alias"
+    t.string "type"
+    t.string "ancestry"
+    t.string "category"
+    t.boolean "active", default: true
+    t.integer "structure_id"
+    t.string "structurable_type", null: false
+    t.bigint "structurable_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["structurable_type", "structurable_id"], name: "index_structures_on_structurable"
+    t.index ["user_id"], name: "index_structures_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -77,4 +94,5 @@ ActiveRecord::Schema.define(version: 2021_03_31_084705) do
   end
 
   add_foreign_key "organizations", "users"
+  add_foreign_key "structures", "users"
 end
