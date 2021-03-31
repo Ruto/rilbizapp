@@ -85,6 +85,8 @@ GEM
     i18n (1.8.9)
       concurrent-ruby (~> 1.0)
     i18n_data (0.10.0)
+    jbuilder (2.11.2)
+      activesupport (>= 5.0.0)
     jwt (2.2.2)
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -179,6 +181,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   countries
+  jbuilder (~> 2.7)
   jwt
   listen (~> 3.3)
   pg (~> 1.1)
