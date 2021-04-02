@@ -17,5 +17,6 @@ class CreateOrganizations < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    add_index :organizations, [:ancestry, :organization_id ]
   end
 end
