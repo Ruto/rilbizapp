@@ -61,7 +61,7 @@ module V1
 
       # Only allow a list of trusted parameters through.
       def organization_params
-        params.permit(:name, :alias, :type, :ancestry, :category, :income, :direct_expense, :indirect_expense, :administrative_cost, :active, :organization_id, :organizable_id, :organizable_type, :user_id)
+        params.permit(:name, :alias, :type, :parent_id, :category, :income, :direct_expense, :indirect_expense, :administrative_cost, :active, :organization_id, :organizable_id, :organizable_type, :user_id)
       end
 
       def get_parent
