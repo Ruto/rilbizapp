@@ -20,8 +20,7 @@ module V1
       @organization = Organization.new(organization_params)
       @organization.user_id = @current_user.id
       @organization.type = "Organizations::#{@organization.category}"
-      @organization.parent_id = params[:parent_id] if params[:parent_id].present?
-    #  binding.pry
+      @organization.parent = get_parent if params[:parent_id].present?
 
       if @organization.save
 
@@ -80,7 +79,7 @@ module V1
       def get_income_parent
           if @organization.parent != nil
              @organization.parent.structures.find_by_type("Structures::Income")
-             Structures::Income
+             #Structures::Income.find_by(:structure_id => @structure.parent.id)
           else
             return nil
           end
