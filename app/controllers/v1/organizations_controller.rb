@@ -20,7 +20,8 @@ module V1
       @organization = Organization.new(organization_params)
       @organization.user_id = @current_user.id
       @organization.type = "Organizations::#{@organization.category}"
-      @organization.parent = get_parent if params[:parent_id].present?
+      @organization.parent_id = params[:parent_id] if params[:parent_id].present?
+    #  binding.pry
 
       if @organization.save
 
