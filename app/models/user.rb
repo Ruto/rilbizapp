@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   has_secure_password
 
+  has_many :products
+  has_many :organizations
+  has_many :structures
+
+
   validates :email, :username, :phone, presence: true, on: :create
   validates :email, :username, :phone, :phone_token, :email_token, uniqueness: true
   validates :email, confirmation: { case_sensitive: false }

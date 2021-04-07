@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  desc: MyString
+  type: 
+  durable: false
+  durability: MyString
+  convenient: false
+  resaleable: false
+  industrial: false
+  internal_trade: false
+  active: 
+  user: one
+
+two:
+  name: MyString
+  desc: MyString
+  type: 
+  durable: false
+  durability: MyString
+  convenient: false
+  resaleable: false
+  industrial: false
+  internal_trade: false
+  active: 
+  user: two
