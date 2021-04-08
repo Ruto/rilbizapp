@@ -19,7 +19,7 @@ module V1
     def create
       @product = Product.new(product_params)
       @product.user_id = @current_user.id
-      @product.type = "Products::#{@product.type}"
+      @product.type = "Products::#{@product.category}"
 
       if @product.save
         render :show, status: :created, location: @product
@@ -52,7 +52,7 @@ module V1
 
       # Only allow a list of trusted parameters through.
       def product_params
-        params.permit(:name, :desc, :type, :durable, :durability, :convenient, :resaleable, :industrial, :internal_trade, :active, :user_id)
+        params.permit(:name, :desc, :category, :durable, :durability, :convenient, :resaleable, :industrial, :internal_trade, :active, :user_id)
       end
   end
 end

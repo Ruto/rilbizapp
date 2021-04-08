@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_07_170051) do
+ActiveRecord::Schema.define(version: 2021_03_31_103152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,23 +34,6 @@ ActiveRecord::Schema.define(version: 2021_04_07_170051) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["organizable_type", "organizable_id"], name: "index_organizations_on_organizable"
     t.index ["user_id"], name: "index_organizations_on_user_id"
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.string "desc"
-    t.string "type"
-    t.boolean "durable"
-    t.string "durability"
-    t.boolean "convenient"
-    t.boolean "resaleable"
-    t.boolean "industrial"
-    t.boolean "internal_trade"
-    t.boolean "active"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "structures", force: :cascade do |t|
@@ -111,6 +94,5 @@ ActiveRecord::Schema.define(version: 2021_04_07_170051) do
   end
 
   add_foreign_key "organizations", "users"
-  add_foreign_key "products", "users"
   add_foreign_key "structures", "users"
 end

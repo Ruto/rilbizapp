@@ -4,6 +4,7 @@ class CreateProducts < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :desc
       t.string :type
+      t.string :category
       t.boolean :durable
       t.string :durability
       t.boolean :convenient

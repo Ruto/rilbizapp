@@ -6,6 +6,7 @@ json.data do
       :name,
       :desc,
       :type,
+      :category,
       :durable,
       :durability,
       :convenient,
