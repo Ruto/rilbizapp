@@ -11,11 +11,11 @@ Rails.application.routes.draw do
 
     resources :organizations do
            resources :company, :department, :sub_department, :holding_company, :product_group,
-           :product, :service_group, :service, :controller => 'organizations', :except => [:destroy, :edit, :update]  
+           :product, :service_group, :service, :controller => 'organizations', :except => [:destroy, :edit, :update]
     end
 
     resources :products do
-      resources :goods, :service, :controller => 'products', :except => [:destroy, :edit, :update]
+      resources :good, :service, :controller => 'products', :except => [:destroy, :edit, :update]
     end
 
     resources :users, only: [:create, :show]  do
