@@ -39,14 +39,14 @@ ActiveRecord::Schema.define(version: 2021_04_07_170051) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "desc"
-    t.string "type", null: false
+    t.string "type"
     t.boolean "durable"
     t.string "durability"
     t.boolean "convenient"
     t.boolean "resaleable"
     t.boolean "industrial"
     t.boolean "internal_trade"
-    t.boolean "active", default: true
+    t.boolean "active"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
