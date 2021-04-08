@@ -5,6 +5,7 @@ class CreateProducts < ActiveRecord::Migration[6.1]
       t.string :desc
       t.string :type
       t.string :category
+      t.string :ancestry
       t.boolean :durable
       t.string :durability
       t.boolean :convenient
@@ -16,5 +17,6 @@ class CreateProducts < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    add_index :products, [:ancestry ]
   end
 end
