@@ -22,7 +22,8 @@ module V1
       @product.type = "Products::#{@product.category}"
 
       if @product.save
-        render :show, status: :created, location: @product
+        render :create, status: :created, locals: { product: @product  }
+        #render :show, status: :created, location: @product
       else
         render json: @product.errors, status: :unprocessable_entity
       end
