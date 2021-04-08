@@ -18,6 +18,8 @@ module V1
     # POST /products.json
     def create
       @product = Product.new(product_params)
+      @product.user_id = @current_user.id
+      @product.type = "Products::#{@product.type}"
 
       if @product.save
         render :show, status: :created, location: @product
