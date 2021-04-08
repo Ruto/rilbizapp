@@ -2,7 +2,6 @@ json.data do
   json.code do
     json.call(
       @code,
-      json.extract! code,
       :id,
       :alias,
       :cost_code,

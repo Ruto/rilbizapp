@@ -4,6 +4,7 @@ json.data do
       @product,
       :id,
       :name,
+      :alias,
       :desc,
       :type,
       :category,
