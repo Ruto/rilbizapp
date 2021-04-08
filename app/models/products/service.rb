@@ -1,5 +1,5 @@
 module Products
-    class Service < Structure
+    class Service < Product
 
         #this sorts out routing issues for subclassing
           def self.model_name

@@ -1,5 +1,5 @@
 module Products
-    class Good < Structure
+    class Good < Product
 
         #this sorts out routing issues for subclassing
           def self.model_name
