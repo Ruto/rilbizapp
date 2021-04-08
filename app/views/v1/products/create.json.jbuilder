@@ -7,6 +7,7 @@ json.data do
       :desc,
       :type,
       :category,
+      :ancestry,
       :durable,
       :durability,
       :convenient,

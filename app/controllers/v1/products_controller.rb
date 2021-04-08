@@ -20,6 +20,7 @@ module V1
       @product = Product.new(product_params)
       @product.user_id = @current_user.id
       @product.type = "Products::#{@product.category}"
+      @product.parent = get_parent if params[:parent_id].present?
 
       if @product.save
         render :create, status: :created, locals: { product: @product  }
@@ -47,13 +48,18 @@ module V1
 
     private
       # Use callbacks to share common setup or constraints between actions.
+
+      def get_parent
+        Product.find_by_id(params[:parent_id])
+      end
+
       def set_product
         @product = Product.find(params[:id])
       end
 
       # Only allow a list of trusted parameters through.
       def product_params
-        params.permit(:name, :desc, :category, :ancestry, :durable, :durability, :convenient, :resaleable, :industrial, :internal_trade, :active, :user_id)
+        params.permit(:name, :desc, :category, :parent_id, :durable, :durability, :convenient, :resaleable, :industrial, :internal_trade, :active, :user_id)
       end
   end
 end
