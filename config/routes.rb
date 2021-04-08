@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       resources :good, :service, :controller => 'products', :except => [:destroy, :edit, :update]
     end
 
+    resources :codes
+
     resources :users, only: [:create, :show]  do
        collection do
          get  'unconfirmed_users'

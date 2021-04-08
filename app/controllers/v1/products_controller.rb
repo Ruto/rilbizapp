@@ -59,7 +59,7 @@ module V1
 
       # Only allow a list of trusted parameters through.
       def product_params
-        params.permit(:name, :desc, :category, :parent_id, :durable, :durability, :convenient, :resaleable, :industrial, :internal_trade, :active, :user_id)
+        params.permit(:name, :alias, :desc, :category, :parent_id, :durable, :durability, :convenient, :resaleable, :industrial, :internal_trade, :active, :user_id)
       end
   end
 end
