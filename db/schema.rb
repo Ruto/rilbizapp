@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_31_103152) do
+ActiveRecord::Schema.define(version: 2021_04_19_064919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "codes", force: :cascade do |t|
+    t.string "alias"
+    t.string "cost_code"
+    t.string "barcode"
+    t.string "system_code"
+    t.bigint "product_id", null: false
+    t.string "codable_type", null: false
+    t.bigint "codable_id", null: false
+    t.boolean "active"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["codable_type", "codable_id"], name: "index_codes_on_codable"
+    t.index ["product_id"], name: "index_codes_on_product_id"
+    t.index ["user_id"], name: "index_codes_on_user_id"
+  end
 
   create_table "organizations", force: :cascade do |t|
     t.string "name"
@@ -34,6 +51,42 @@ ActiveRecord::Schema.define(version: 2021_03_31_103152) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["organizable_type", "organizable_id"], name: "index_organizations_on_organizable"
     t.index ["user_id"], name: "index_organizations_on_user_id"
+  end
+
+  create_table "prices", force: :cascade do |t|
+    t.string "priceable_type", null: false
+    t.bigint "priceable_id", null: false
+    t.string "type"
+    t.bigint "code_id", null: false
+    t.float "amount", default: 0.0
+    t.boolean "active", default: true
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["code_id"], name: "index_prices_on_code_id"
+    t.index ["priceable_type", "priceable_id"], name: "index_prices_on_priceable"
+    t.index ["user_id"], name: "index_prices_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "alias"
+    t.string "desc"
+    t.string "type"
+    t.string "category"
+    t.string "ancestry"
+    t.boolean "durable"
+    t.string "durability"
+    t.boolean "convenient"
+    t.boolean "resaleable"
+    t.boolean "industrial"
+    t.boolean "internal_trade"
+    t.boolean "active"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ancestry"], name: "index_products_on_ancestry"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "structures", force: :cascade do |t|
@@ -93,6 +146,11 @@ ActiveRecord::Schema.define(version: 2021_03_31_103152) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "codes", "products"
+  add_foreign_key "codes", "users"
   add_foreign_key "organizations", "users"
+  add_foreign_key "prices", "codes"
+  add_foreign_key "prices", "users"
+  add_foreign_key "products", "users"
   add_foreign_key "structures", "users"
 end

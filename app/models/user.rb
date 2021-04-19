@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :products
   has_many :organizations
   has_many :structures
+  has_many :prices
 
 
   validates :email, :username, :phone, presence: true, on: :create
