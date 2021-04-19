@@ -18,6 +18,7 @@ module V1
     # POST /accounts.json
     def create
       @account = Account.new(account_params)
+      @account.user_id = @current_user.id
 
       if @account.save
         render :create, status: :created, locals: { account: @account  }
