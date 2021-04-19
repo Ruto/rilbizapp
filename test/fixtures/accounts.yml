@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  accountable: one
+  accountable_type: Accountable
+  type: 
+  name: MyString
+  contacts: MyString
+  memo: MyText
+  active: false
+  user: one
+
+two:
+  accountable: two
+  accountable_type: Accountable
+  type: 
+  name: MyString
+  contacts: MyString
+  memo: MyText
+  active: false
+  user: two

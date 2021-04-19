@@ -21,7 +21,7 @@ module V1
       @price.user_id = @current_user.id
 
       if @price.save
-        render :create, status: :created, locals: { organization: @organization  }
+        render :create, status: :created, locals: { price: @price  }
         #render :show, status: :created, location: @price
       else
         render json: @price.errors, status: :unprocessable_entity

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace :v1, defaults: { format: :json } do
@@ -22,7 +21,11 @@ Rails.application.routes.draw do
     resources :codes
 
     resources :prices do
-      resources :budget_price, :invoice_price, :purchase_price, :quotation_price, :sales_price, :except => [:destroy, :edit, :update] 
+      resources :budget_price, :invoice_price, :purchase_price, :quotation_price, :sales_price, :except => [:destroy, :edit, :update]
+    end
+
+    resources :accounts do
+      resources :customer, :supplier, :employee, :except => [:destroy, :edit, :update]
     end
 
     resources :users, only: [:create, :show]  do
