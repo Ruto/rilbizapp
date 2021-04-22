@@ -22,6 +22,9 @@ gem 'phony'
 
 gem 'ancestry'
 
+gem 'cancancan'
+gem 'rolify'
+
 gem 'pry', :group => :development
 
 # Use Active Storage variant

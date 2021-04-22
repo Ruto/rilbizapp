@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_19_064919) do
+ActiveRecord::Schema.define(version: 2021_04_22_111551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "accountable_type", null: false
+    t.bigint "accountable_id", null: false
+    t.string "type"
+    t.string "name"
+    t.string "contacts"
+    t.text "memo"
+    t.boolean "active", default: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["accountable_type", "accountable_id"], name: "index_accounts_on_accountable"
+    t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
 
   create_table "codes", force: :cascade do |t|
     t.string "alias"
@@ -89,6 +104,16 @@ ActiveRecord::Schema.define(version: 2021_04_19_064919) do
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
+  end
+
   create_table "structures", force: :cascade do |t|
     t.string "name"
     t.string "alias"
@@ -146,6 +171,18 @@ ActiveRecord::Schema.define(version: 2021_04_19_064919) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "users_roles", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "account_id"
+    t.bigint "role_id"
+    t.boolean "active"
+    t.index ["account_id"], name: "index_users_roles_on_account_id"
+    t.index ["role_id"], name: "index_users_roles_on_role_id"
+    t.index ["user_id", "role_id", "account_id"], name: "index_users_roles_on_user_id_and_role_id_and_account_id"
+    t.index ["user_id"], name: "index_users_roles_on_user_id"
+  end
+
+  add_foreign_key "accounts", "users"
   add_foreign_key "codes", "products"
   add_foreign_key "codes", "users"
   add_foreign_key "organizations", "users"
