@@ -1,4 +1,5 @@
 class Structure < ApplicationRecord
+  resourcify
   has_ancestry
   belongs_to :structurable, polymorphic: true
   belongs_to :user
