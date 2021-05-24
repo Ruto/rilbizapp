@@ -3,8 +3,29 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
+  def initialize(account)
+
     # Define abilities for the passed in user here. For example:
+
+     if account.type == "Accounts::Employee"
+        account.roles
+     elsif account.type == "Accounts::Supplier"
+
+     elsif account.type == "Accounts::Customer"
+
+     elsif account.type == "Accounts::Banker"
+
+     elsif account.type == "Accounts::Auditor"
+
+     elsif account.type == "Accounts::Guest"
+
+     else
+       account.type = "Accounts::Guest"
+     end
+
+
+    #
+    #
     #
     #   user ||= User.new # guest user (not logged in)
     #   if user.admin?

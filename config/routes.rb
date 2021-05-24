@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     end
 
     resources :accounts do
-      resources :customer, :supplier, :employee, :except => [:destroy, :edit, :update]
+      resources :customer, :supplier, :employee, :guest, :banker, :auditor, :except => [:destroy, :edit, :update]
     end
 
     resources :users, only: [:create, :show]  do
