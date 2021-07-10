@@ -23,7 +23,13 @@ class Ability
        account.type = "Accounts::Guest"
      end
 
-
+    #   if user.has_role? :admin
+    #      can :manage, :all
+    #   else
+    #      can :read, Forum
+    #      can :write, Forum if user.has_role?(:moderator, Forum)
+    #      can :write, Forum, :id => Forum.with_role(:moderator, user).pluck(:id)
+    #   end
     #
     #
     #
