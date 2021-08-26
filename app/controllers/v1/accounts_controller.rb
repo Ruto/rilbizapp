@@ -6,12 +6,14 @@ module V1
     # GET /accounts
     # GET /accounts.json
     def index
-      @accounts = Account.all
+      #@accounts = Account.all
+      @accounts = Current.user.accounts
     end
 
     # GET /accounts/1
     # GET /accounts/1.json
     def show
+      load_current_account!
     end
 
     # POST /accounts
@@ -45,6 +47,10 @@ module V1
     end
 
     private
+
+      def load_current_account!
+        Current.account = @account if Current.user.accounts.include? @account
+      end
       # Use callbacks to share common setup or constraints between actions.
       def set_account
         @account = Account.find(params[:id])
